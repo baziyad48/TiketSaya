@@ -15,5 +15,5 @@
 
 <!--Ketika input tidak aktif-->
     <item
-        android:drawable="@drawable/bg_white"/>
+        android:drawable="@drawable/bg_input_normal"/>
 </selector>

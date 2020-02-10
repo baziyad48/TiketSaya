@@ -10,5 +10,8 @@
     <color name="greyPrimary">#8D8D8D</color>
     <color name="textGrey">#8D8D8D</color>
     <color name="textBlack">#21272C</color>
+    <color name="inputWhite">#F1F2F5</color>
+    <color name="inputBlue">#F0F3FF</color>
+    <color name="backgroundWhite">#EDF1F8</color>
 
 </resources>
