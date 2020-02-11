@@ -6,23 +6,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
-public class Register extends AppCompatActivity {
+public class RegisterBio extends AppCompatActivity {
 
-    Button btn_register;
+    Button btn_continue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register_bio);
 
-        btn_register = (Button) findViewById(R.id.btn_register);
+        btn_continue = (Button) findViewById(R.id.btn_continue);
 
-        btn_register.setOnClickListener(new View.OnClickListener() {
+        btn_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Register.this, RegisterBio.class);
+                Intent intent = new Intent(RegisterBio.this, RegisterSuccess.class);
                 startActivity(intent);
             }
         });
