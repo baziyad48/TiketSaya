@@ -122,7 +122,6 @@
         android:text="@string/cont"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:layout_marginRight="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
