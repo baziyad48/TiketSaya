@@ -24,7 +24,7 @@
         android:layout_marginBottom="218dp"
         android:fontFamily="@font/mlight"
         android:text="@string/slogan"
-        android:textColor="@color/greyPrimary"
+        android:textColor="@color/textGrey"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -125,7 +125,7 @@
                         android:background="@drawable/btnmines"/>
 
                     <TextView
-                        android:id="caption_quantity"
+                        android:id="@+id/caption_quantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mregular"
