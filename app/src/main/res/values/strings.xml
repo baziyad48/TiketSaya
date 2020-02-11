@@ -8,4 +8,5 @@
     <string name="cont">Continue</string>
     <string name="fullname">Fullname</string>
     <string name="bio">Bio</string>
+    <string name="guide_tips"><![CDATA[Guide & Tips]]></string>
 </resources>
