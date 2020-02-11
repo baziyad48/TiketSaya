@@ -7,21 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class TicketDetail extends AppCompatActivity {
+public class TicketCheckout extends AppCompatActivity {
 
-    Button btn_buy_ticket;
+    Button btn_pay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_detail);
+        setContentView(R.layout.activity_ticket_checkout);
 
-        btn_buy_ticket = (Button) findViewById(R.id.buy_ticket);
+        btn_pay = (Button) findViewById(R.id.btn_pay);
 
-        btn_buy_ticket.setOnClickListener(new View.OnClickListener() {
+        btn_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TicketDetail.this, TicketCheckout.class);
+                Intent intent = new Intent(TicketCheckout.this, TicketSuccess.class);
                 startActivity(intent);
             }
         });

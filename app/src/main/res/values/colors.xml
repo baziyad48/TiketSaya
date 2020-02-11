@@ -14,5 +14,6 @@
     <color name="inputWhite">#F1F2F5</color>
     <color name="inputBlue">#F0F3FF</color>
     <color name="backgroundWhite">#EDF1F8</color>
+    <color name="greyLine">#EDEDED</color>
 
 </resources>

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/caption_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/caption_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -41,7 +41,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/caption_title" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -53,7 +53,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
+        app:layout_constraintTop_toBottomOf="@+id/caption_city">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginVertical="16dp"
-                android:background="#EDEDED" />
+                android:background="@color/greyLine" />
 
             <!--Photo-->
             <LinearLayout
@@ -100,9 +100,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="12dp">
+                    android:layout_marginLeft="12dp"
+                    android:layout_gravity="center_vertical">
 
                     <TextView
+                        android:id="@+id/caption_photo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mregular"
@@ -138,9 +140,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="12dp">
+                    android:layout_marginLeft="12dp"
+                    android:layout_gravity="center_vertical">
 
                     <TextView
+                        android:id="@+id/caption_wifi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mregular"
@@ -176,9 +180,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="12dp">
+                    android:layout_marginLeft="12dp"
+                    android:layout_gravity="center_vertical">
 
                     <TextView
+                        android:id="@+id/caption_festival"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mregular"
@@ -199,19 +205,21 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/description"
                 android:lineSpacingExtra="6sp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/mlight"
                 android:textSize="14sp"
                 android:textColor="@color/textGrey"
-                android:text="The leaning of the Tower of Pisa\ncomes into the story in 1173, when\nconstruction began."/>
+                android:text="The leaning of the Tower of Pisa comes into\nthe story in 1173, whenconstruction began."/>
 
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/buy_ticket"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginHorizontal="24dp"
