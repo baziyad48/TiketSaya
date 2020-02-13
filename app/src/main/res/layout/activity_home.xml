@@ -198,7 +198,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="@font/mregular"
-                                android:text="Torri"
+                                android:text="Torii"
                                 android:textColor="@color/textBlack"
                                 android:textSize="12sp" />
 
@@ -257,7 +257,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="@font/mregular"
-                                android:text="Candi"
+                                android:text="Temple"
                                 android:textColor="@color/textBlack"
                                 android:textSize="12sp" />
 
