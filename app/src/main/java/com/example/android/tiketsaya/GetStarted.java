@@ -28,14 +28,14 @@ public class GetStarted extends AppCompatActivity {
         app_emblem = (ImageView) findViewById(R.id.app_emblem);
         app_tagline = (TextView) findViewById(R.id.app_tagline);
 
+        btn_signIn = (Button) findViewById(R.id.btn_signIn);
+        btn_getStarted = (Button) findViewById(R.id.btn_getStarted);
+
         app_emblem.startAnimation(top_down);
         app_tagline.startAnimation(top_down);
 
         btn_signIn.startAnimation(bottom_up);
         btn_getStarted.startAnimation(bottom_up);
-
-        btn_signIn = (Button) findViewById(R.id.btn_signIn);
-        btn_getStarted = (Button) findViewById(R.id.btn_getStarted);
 
         btn_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,5 +52,12 @@ public class GetStarted extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
     }
 }
