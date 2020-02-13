@@ -26,6 +26,8 @@ public class TicketCheckout extends AppCompatActivity {
 
         //Inisialisasi jumlah ticket ketika petama kali
         caption_quantity.setText(String.valueOf(default_quantity));
+        btn_minus.animate().alpha(0).setDuration(300).start();
+        btn_minus.setEnabled(false);
 
         btn_pay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,9 +45,15 @@ public class TicketCheckout extends AppCompatActivity {
         btn_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(default_quantity < 99) {
-                    default_quantity++;
-                    caption_quantity.setText(String.valueOf(default_quantity));
+                default_quantity++;
+                caption_quantity.setText(String.valueOf(default_quantity));
+                if(default_quantity > 1){
+                    btn_minus.animate().alpha(1).setDuration(300).start();
+                    btn_minus.setEnabled(true);
+                }
+                if(default_quantity > 9) {
+                    btn_plus.animate().alpha(0).setDuration(300).start();
+                    btn_plus.setEnabled(false);
                 }
             }
         });
@@ -53,9 +61,15 @@ public class TicketCheckout extends AppCompatActivity {
         btn_minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(default_quantity > 1) {
-                    default_quantity--;
-                    caption_quantity.setText(String.valueOf(default_quantity));
+                default_quantity--;
+                caption_quantity.setText(String.valueOf(default_quantity));
+                if(default_quantity < 2){
+                    btn_minus.animate().alpha(0).setDuration(300).start();
+                    btn_minus.setEnabled(false);
+                }
+                if(default_quantity < 10) {
+                    btn_plus.animate().alpha(1).setDuration(300).start();
+                    btn_plus.setEnabled(true);
                 }
             }
         });
