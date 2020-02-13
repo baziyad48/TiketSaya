@@ -38,7 +38,7 @@
         android:fontFamily="@font/mlight"
         android:gravity="center"
         android:lineSpacingExtra="6sp"
-        android:text="PLet the world knows yourself\nmore better and ever"
+        android:text="Let the world knows yourself\nmore better and ever"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
