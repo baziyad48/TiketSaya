@@ -16,7 +16,7 @@ public class TicketDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
 
-        btn_buy_ticket = (Button) findViewById(R.id.buy_ticket);
+        btn_buy_ticket = findViewById(R.id.buy_ticket);
 
         btn_buy_ticket.setOnClickListener(new View.OnClickListener() {
             @Override

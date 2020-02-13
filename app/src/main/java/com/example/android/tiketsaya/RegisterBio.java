@@ -16,7 +16,7 @@ public class RegisterBio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_bio);
 
-        btn_continue = (Button) findViewById(R.id.btn_continue);
+        btn_continue = findViewById(R.id.btn_continue);
 
         btn_continue.setOnClickListener(new View.OnClickListener() {
             @Override

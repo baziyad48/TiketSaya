@@ -25,11 +25,11 @@ public class GetStarted extends AppCompatActivity {
         top_down = AnimationUtils.loadAnimation(this, R.anim.top_down);
         bottom_up = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
 
-        app_emblem = (ImageView) findViewById(R.id.app_emblem);
-        app_tagline = (TextView) findViewById(R.id.app_tagline);
+        app_emblem = findViewById(R.id.app_emblem);
+        app_tagline = findViewById(R.id.app_tagline);
 
-        btn_signIn = (Button) findViewById(R.id.btn_signIn);
-        btn_getStarted = (Button) findViewById(R.id.btn_getStarted);
+        btn_signIn = findViewById(R.id.btn_signIn);
+        btn_getStarted = findViewById(R.id.btn_getStarted);
 
         app_emblem.startAnimation(top_down);
         app_tagline.startAnimation(top_down);
@@ -52,12 +52,5 @@ public class GetStarted extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
     }
 }

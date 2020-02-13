@@ -25,8 +25,8 @@ public class SplashScreen extends AppCompatActivity {
         app_splash = AnimationUtils.loadAnimation(this, R.anim.app_splash);
         bottom_up = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
 
-        app_logo = (ImageView) findViewById(R.id.app_logo);
-        app_title = (TextView) findViewById(R.id.app_title);
+        app_logo = findViewById(R.id.app_logo);
+        app_title = findViewById(R.id.app_title);
 
         //Menjalankan animasi
         app_logo.startAnimation(app_splash);

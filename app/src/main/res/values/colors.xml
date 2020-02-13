@@ -15,5 +15,6 @@
     <color name="backgroundWhite">#EDF1F8</color>
     <color name="greyLine">#EDEDED</color>
     <color name="textBlue">#2486EF</color>
+    <color name="textRed">#D1206B</color>
 
 </resources>

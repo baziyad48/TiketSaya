@@ -24,11 +24,11 @@ public class RegisterSuccess extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_success);
 
-        btn_explore = (Button) findViewById(R.id.btn_explore);
+        btn_explore = findViewById(R.id.btn_explore);
 
-        succes_img = (ImageView) findViewById(R.id.success_img);
-        success_title = (TextView) findViewById(R.id.success_title);
-        success_subtitle = (TextView) findViewById(R.id.success_subtitle);
+        succes_img = findViewById(R.id.success_img);
+        success_title = findViewById(R.id.success_title);
+        success_subtitle = findViewById(R.id.success_subtitle);
 
         app_spalsh = AnimationUtils.loadAnimation(this, R.anim.app_splash);
         bottom_up = AnimationUtils.loadAnimation(this, R.anim.bottom_up);

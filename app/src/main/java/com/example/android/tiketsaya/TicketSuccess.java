@@ -16,7 +16,7 @@ public class TicketSuccess extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_success);
 
-        btn_dashboard = (Button) findViewById(R.id.btn_dashboard);
+        btn_dashboard = findViewById(R.id.btn_dashboard);
 
         btn_dashboard.setOnClickListener(new View.OnClickListener() {
             @Override

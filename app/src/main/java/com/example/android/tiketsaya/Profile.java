@@ -18,8 +18,8 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        ticket_detail = (LinearLayout) findViewById(R.id.ticket_detail);
-        btn_edit = (Button) findViewById(R.id.btn_edit);
+        ticket_detail = findViewById(R.id.ticket_detail);
+        btn_edit = findViewById(R.id.btn_edit);
 
         ticket_detail.setOnClickListener(new View.OnClickListener() {
             @Override

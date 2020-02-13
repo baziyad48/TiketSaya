@@ -16,8 +16,8 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        img_pisa = (ImageView) findViewById(R.id.img_pisa);
-        profile = (ImageView) findViewById(R.id.profile);
+        img_pisa = findViewById(R.id.img_pisa);
+        profile = findViewById(R.id.profile);
 
         img_pisa.setOnClickListener(new View.OnClickListener() {
             @Override
