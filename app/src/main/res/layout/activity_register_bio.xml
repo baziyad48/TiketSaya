@@ -78,6 +78,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="44dp"
+                    android:layout_marginEnd="104dp"
+                    android:background="@drawable/circle_white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <Button
                     android:id="@+id/btn_upload"
                     android:layout_width="30dp"
@@ -85,6 +94,7 @@
                     android:layout_marginTop="44dp"
                     android:layout_marginEnd="104dp"
                     android:background="@drawable/btnpls"
+                    android:textColor="@android:color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,6 +110,7 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginBottom="24dp"
@@ -118,6 +129,7 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/bio"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginBottom="24dp"
