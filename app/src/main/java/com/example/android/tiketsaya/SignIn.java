@@ -51,6 +51,9 @@ public class SignIn extends AppCompatActivity {
         btn_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_signIn.setEnabled(false);
+                btn_signIn.setText("Loading");
+
                 reference = FirebaseDatabase.getInstance().getReference().child("User").child(username.getText().toString());
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
