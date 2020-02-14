@@ -110,7 +110,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/register_name"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginBottom="24dp"
@@ -129,7 +129,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/bio"
+                android:id="@+id/register_bio"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginBottom="24dp"

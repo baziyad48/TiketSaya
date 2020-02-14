@@ -35,9 +35,9 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         btn_register = findViewById(R.id.btn_register);
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        email = findViewById(R.id.email);
+        username = findViewById(R.id.register_username);
+        password = findViewById(R.id.register_password);
+        email = findViewById(R.id.register_email);
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override

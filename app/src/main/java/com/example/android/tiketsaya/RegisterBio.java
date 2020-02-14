@@ -51,8 +51,8 @@ public class RegisterBio extends AppCompatActivity {
 
         btn_continue = findViewById(R.id.btn_continue);
         btn_upload = findViewById(R.id.btn_upload);
-        name = findViewById(R.id.name);
-        bio = findViewById(R.id.bio);
+        name = findViewById(R.id.register_name);
+        bio = findViewById(R.id.register_bio);
         img_avatar = findViewById(R.id.img_avatar);
 
         btn_upload.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +65,9 @@ public class RegisterBio extends AppCompatActivity {
         btn_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            btn_continue.setEnabled(false);
+            btn_continue.setText("Loading");
+
             reference = FirebaseDatabase.getInstance().getReference().child("User").child(username_local);
             storage = FirebaseStorage.getInstance().getReference().child("Avatar").child(username_local);
 
