@@ -41,21 +41,23 @@
                 app:layout_constraintTop_toTopOf="@+id/view5" />
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/icon_nopic"
+                tools:src="@drawable/icon_nopic"
                 app:layout_constraintBottom_toBottomOf="@+id/view7"
                 app:layout_constraintEnd_toEndOf="@+id/view7"
+                app:layout_constraintHorizontal_bias="0.45"
                 app:layout_constraintStart_toStartOf="@+id/view7"
                 app:layout_constraintTop_toTopOf="@+id/view7" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/mmedium"
-                android:text="Fullname"
+                tools:text="Fullname"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,17 +65,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/view7" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/profile_bio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/mlight"
-                android:text="Bio"
+                tools:text="Bio"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
             <LinearLayout
                 android:id="@+id/linearLayout7"
@@ -85,7 +87,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView14">
+                app:layout_constraintTop_toBottomOf="@+id/profile_bio">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -116,103 +118,11 @@
                         android:layout_marginVertical="16dp"
                         android:background="@color/greyLine" />
 
-                    <LinearLayout
-                        android:id="@+id/ticket_detail"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/item_ticket_placeholder"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:orientation="horizontal">
+                        android:layout_height="130dp"/>
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_ticket_buy" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="12dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mregular"
-                                android:text="Pisa Tower"
-                                android:textColor="@color/textBlack"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mlight"
-                                android:text="Pisa City, Italy"
-                                android:textColor="@color/textGrey"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical|end"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/mlight"
-                            android:text="3 Tickets"
-                            android:textAlignment="textEnd"
-                            android:textColor="@color/textBlue"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_ticket_buy" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="12dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mregular"
-                                android:text="Torri"
-                                android:textColor="@color/textBlack"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mlight"
-                                android:text="Osaka District, Japan"
-                                android:textColor="@color/textGrey"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical|end"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/mlight"
-                            android:text="1 Tickets"
-                            android:textAlignment="textEnd"
-                            android:textColor="@color/textBlue"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -240,11 +150,13 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="24dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/bg_white"
                 android:fontFamily="@font/mmedium"
                 android:text="Sign Out"
                 android:textColor="@color/textGrey"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
