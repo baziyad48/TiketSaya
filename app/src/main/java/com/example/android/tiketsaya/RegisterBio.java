@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -73,12 +74,17 @@ public class RegisterBio extends AppCompatActivity {
 
             //Validasi foto
             if(img_location != null) {
-                StorageReference temp = storage.child(System.currentTimeMillis() + "." + getFileExtension(img_location));
+                final StorageReference temp = storage.child(System.currentTimeMillis() + "." + getFileExtension(img_location));
                 temp.putFile(img_location).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        String img_uri = taskSnapshot.getUploadSessionUri().toString();
-                        reference.getRef().child("url_photo").setValue(img_uri);
+                       temp.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                           @Override
+                           public void onSuccess(Uri uri) {
+                               Log.v("url_photo", uri.toString());
+                               reference.getRef().child("url_photo").setValue(uri.toString());
+                           }
+                       });
 
                         reference.getRef().child("name").setValue(name.getText().toString());
                         reference.getRef().child("bio").setValue(bio.getText().toString());

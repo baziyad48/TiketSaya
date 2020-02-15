@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -59,6 +60,7 @@ public class Home extends AppCompatActivity {
                 balance.setText("IDR " + dataSnapshot.child("balance").getValue().toString() + "K");
 
                 //Load gambar dari Firebasae menggunakan Picasso
+                Log.v("url_photo", dataSnapshot.child("url_photo").getValue().toString());
                 Picasso.get().load(dataSnapshot.child("url_photo").getValue().toString()).fit().centerCrop().into(profile);
             }
 

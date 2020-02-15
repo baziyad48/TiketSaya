@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -54,7 +55,8 @@ public class TicketDetail extends AppCompatActivity {
                 caption_festival.setText(dataSnapshot.child("is_festival").getValue().toString());
                 description.setText(dataSnapshot.child("short_description").getValue().toString());
 
-                Picasso.get().load(dataSnapshot.child("url_thumbnail").getValue().toString()).fit().centerCrop().into(thumbnail);
+                Log.v("url_thumbnail", dataSnapshot.child("url_thumbnail").getValue().toString());
+                Picasso.get().load(dataSnapshot.child("url_thumbnail").getValue().toString()).into(thumbnail);
             }
 
             @Override
