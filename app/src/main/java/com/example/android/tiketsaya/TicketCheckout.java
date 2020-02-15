@@ -1,25 +1,46 @@
 package com.example.android.tiketsaya;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class TicketCheckout extends AppCompatActivity {
 
     Button btn_pay, btn_plus, btn_minus;
-    TextView caption_quantity, caption_price, caption_balance;
-    int quantity = 1, balance = 100, price = 20;
+    TextView caption_quantity, caption_price, caption_balance, caption_title, caption_city, caption_policy;
+    int quantity = 1, balance , price;
     ImageView alert;
+
+    final String USERNAME_KEY = "username";
+    String username_default;
+    String username_local;
+
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_checkout);
+
+        Bundle bundle =  getIntent().getExtras();
+        final String tour_title = bundle.getString("tour_title", "");
+
+        SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+        username_local = sharedPreferences.getString(username_default, "");
 
         btn_pay = findViewById(R.id.btn_pay);
         btn_plus =  findViewById(R.id.btn_plus);
@@ -28,6 +49,43 @@ public class TicketCheckout extends AppCompatActivity {
         caption_balance = findViewById(R.id.caption_balance);
         caption_price = findViewById(R.id.caption_price);
         alert = findViewById(R.id.alert);
+        caption_title = findViewById(R.id.caption_title_checkout);
+        caption_city = findViewById(R.id.caption_city_checkout);
+        caption_policy = findViewById(R.id.policy_checkout);
+
+        //Mengisi TextView
+        reference = FirebaseDatabase.getInstance().getReference().child("Tour").child(tour_title);
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                caption_title.setText(dataSnapshot.child("tour_name").getValue().toString());
+                caption_city.setText(dataSnapshot.child("location").getValue().toString());
+                caption_policy.setText(dataSnapshot.child("policy").getValue().toString());
+                price = Integer.valueOf(dataSnapshot.child("ticket_price").getValue().toString());
+                caption_price.setText("IDR " + (quantity * price) + "K");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //Mengisi balance
+        reference = FirebaseDatabase.getInstance().getReference().child("User").child(username_local);
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                balance = Integer.valueOf(dataSnapshot.child("balance").getValue().toString());
+                caption_balance.setText("IDR " + balance + "K");
+                Log.v("balance", String.valueOf(balance));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //Inisialisasi jumlah ticket ketika petama kali
         caption_quantity.setText(String.valueOf(quantity));
@@ -35,15 +93,44 @@ public class TicketCheckout extends AppCompatActivity {
         btn_minus.setEnabled(false);
         alert.animate().alpha(0).setDuration(300).start();
 
-        //Inisialisasi total harga dan balance ketika pertama kali
-        caption_price.setText("IDR " + (quantity * price) + "K");
-        caption_balance.setText("IDR " + balance + "K");
-
         btn_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TicketCheckout.this, TicketSuccess.class);
-                startActivity(intent);
+                btn_pay.setEnabled(false);
+                btn_pay.setText("Loading");
+
+                //Update balance dan ticket history
+                reference = FirebaseDatabase.getInstance().getReference().child("Ticket").child(username_local).child(tour_title + "_" + System.currentTimeMillis());
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        reference.getRef().child("tour_name").setValue(tour_title);
+                        reference.getRef().child("quantity").setValue(quantity);
+                        reference.getRef().child("price").setValue(quantity * price);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+                reference = FirebaseDatabase.getInstance().getReference().child("User").child(username_local);
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        reference.getRef().child("balance").setValue(balance - (quantity * price));
+
+                        Intent intent = new Intent(TicketCheckout.this, TicketSuccess.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
     }

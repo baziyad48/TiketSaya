@@ -69,6 +69,7 @@ public class TicketDetail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TicketDetail.this, TicketCheckout.class);
+                intent.putExtra("tour_title", caption_title.getText().toString());
                 startActivity(intent);
             }
         });
