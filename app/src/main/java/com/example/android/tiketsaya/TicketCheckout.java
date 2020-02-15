@@ -29,7 +29,7 @@ public class TicketCheckout extends AppCompatActivity {
     String username_default;
     String username_local;
 
-    DatabaseReference reference;
+    DatabaseReference reference, reference_extra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,14 +100,14 @@ public class TicketCheckout extends AppCompatActivity {
                 btn_pay.setText("Loading");
 
                 //Update balance dan ticket history
-                reference = FirebaseDatabase.getInstance().getReference().child("Ticket").child(username_local).child(tour_title + "_" + System.currentTimeMillis());
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                reference_extra = FirebaseDatabase.getInstance().getReference().child("Ticket").child(username_local).child(tour_title + "_" + System.currentTimeMillis());
+
+                reference_extra.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        reference.getRef().child("tour_name").setValue(tour_title);
-                        reference.getRef().child("quantity").setValue(quantity);
-                        reference.getRef().child("price").setValue(quantity * price);
-
+                        dataSnapshot.getRef().child("tour_name").setValue(tour_title);
+                        dataSnapshot.getRef().child("quantity").setValue(quantity);
+                        dataSnapshot.getRef().child("price").setValue(quantity * price);
                     }
 
                     @Override

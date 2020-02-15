@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,31 +46,37 @@ public class Register extends AppCompatActivity {
                 btn_register.setEnabled(false);
                 btn_register.setText("Loading");
 
-                //Menggunakan shared preferences
-                SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(username_default, username.getText().toString());
-                editor.apply();
+                if(username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(),"Field cannot be blank!", Toast.LENGTH_SHORT).show();
+                    btn_register.setEnabled(true);
+                    btn_register.setText("Continue");
+                } else {
+                    //Menggunakan shared preferences
+                    SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(username_default, username.getText().toString());
+                    editor.apply();
 
-                //Upload ke database
-                reference = FirebaseDatabase.getInstance().getReference().child("User").child(username.getText().toString());
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        dataSnapshot.getRef().child("username").setValue(username.getText().toString());
-                        dataSnapshot.getRef().child("password").setValue(password.getText().toString());
-                        dataSnapshot.getRef().child("email").setValue(email.getText().toString());
-                        dataSnapshot.getRef().child("balance").setValue(100);
-                    }
+                    //Upload ke database
+                    reference = FirebaseDatabase.getInstance().getReference().child("User").child(username.getText().toString());
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            dataSnapshot.getRef().child("username").setValue(username.getText().toString());
+                            dataSnapshot.getRef().child("password").setValue(password.getText().toString());
+                            dataSnapshot.getRef().child("email").setValue(email.getText().toString());
+                            dataSnapshot.getRef().child("balance").setValue(100);
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
 
-                Intent intent = new Intent(Register.this, RegisterBio.class);
-                startActivity(intent);
+                    Intent intent = new Intent(Register.this, RegisterBio.class);
+                    startActivity(intent);
+                }
             }
         });
     }

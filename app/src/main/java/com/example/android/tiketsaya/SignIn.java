@@ -54,37 +54,45 @@ public class SignIn extends AppCompatActivity {
                 btn_signIn.setEnabled(false);
                 btn_signIn.setText("Loading");
 
-                reference = FirebaseDatabase.getInstance().getReference().child("User").child(username.getText().toString());
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.exists()) {
-                            //Cek password di database
-                            String temp = dataSnapshot.child("password").getValue().toString();
-                            if(username.getText().toString().equals(temp)) {
-                                //Menyimpan username pada shared preferences
-                                SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString(username_default, username.getText().toString());
-                                editor.apply();
+                if(username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(),"Field cannot be blank!", Toast.LENGTH_SHORT).show();
+                    btn_signIn.setEnabled(true);
+                    btn_signIn.setText("Sign In");
+                } else {
+                    reference = FirebaseDatabase.getInstance().getReference().child("User").child(username.getText().toString());
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()) {
+                                //Cek password di database
+                                String temp = dataSnapshot.child("password").getValue().toString();
+                                if(password.getText().toString().equals(temp)) {
+                                    //Menyimpan username pada shared preferences
+                                    SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString(username_default, username.getText().toString());
+                                    editor.apply();
 
-                                Intent intent = new Intent(SignIn.this, Home.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else {
+                                    Intent intent = new Intent(SignIn.this, Home.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(getApplicationContext(),"Wrong username or password!", Toast.LENGTH_SHORT).show();
+                                    btn_signIn.setEnabled(true);
+                                    btn_signIn.setText("Sign In");
+                                }
+                            } else {
                                 Toast.makeText(getApplicationContext(),"Wrong username or password!", Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            Toast.makeText(getApplicationContext(),"Wrong username or password!", Toast.LENGTH_SHORT).show();
+                                btn_signIn.setEnabled(true);
+                                btn_signIn.setText("Sign In");                        }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+                }
             }
         });
     }

@@ -15,6 +15,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -69,33 +70,39 @@ public class RegisterBio extends AppCompatActivity {
             btn_continue.setEnabled(false);
             btn_continue.setText("Loading");
 
-            reference = FirebaseDatabase.getInstance().getReference().child("User").child(username_local);
-            storage = FirebaseStorage.getInstance().getReference().child("Avatar").child(username_local);
+            if (name.getText().toString().isEmpty() || bio.getText().toString().isEmpty()) {
+                Toast.makeText(getApplicationContext(),"Field cannot be blank!", Toast.LENGTH_SHORT).show();
+                btn_continue.setEnabled(true);
+                btn_continue.setText("Continue");
+            } else {
+                reference = FirebaseDatabase.getInstance().getReference().child("User").child(username_local);
+                storage = FirebaseStorage.getInstance().getReference().child("Avatar").child(username_local);
 
-            //Validasi foto
-            if(img_location != null) {
-                final StorageReference temp = storage.child(System.currentTimeMillis() + "." + getFileExtension(img_location));
-                temp.putFile(img_location).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                       temp.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                           @Override
-                           public void onSuccess(Uri uri) {
-                               Log.v("url_photo", uri.toString());
-                               reference.getRef().child("url_photo").setValue(uri.toString());
-                           }
-                       });
+                //Validasi foto
+                if(img_location != null) {
+                    final StorageReference temp = storage.child(System.currentTimeMillis() + "." + getFileExtension(img_location));
+                    temp.putFile(img_location).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            temp.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Log.v("url_photo", uri.toString());
+                                    reference.getRef().child("url_photo").setValue(uri.toString());
+                                }
+                            });
 
-                        reference.getRef().child("name").setValue(name.getText().toString());
-                        reference.getRef().child("bio").setValue(bio.getText().toString());
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        Intent intent = new Intent(RegisterBio.this, RegisterSuccess.class);
-                        startActivity(intent);
-                    }
-                });
+                            reference.getRef().child("name").setValue(name.getText().toString());
+                            reference.getRef().child("bio").setValue(bio.getText().toString());
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            Intent intent = new Intent(RegisterBio.this, RegisterSuccess.class);
+                            startActivity(intent);
+                        }
+                    });
+                }
             }
             }
         });
