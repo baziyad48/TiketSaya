@@ -51,7 +51,7 @@ public class Home extends AppCompatActivity {
         balance = findViewById(R.id.home_balance);
 
         reference = FirebaseDatabase.getInstance().getReference().child("User").child(username_local);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //Set value dari Firebase

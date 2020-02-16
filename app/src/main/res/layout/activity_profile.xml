@@ -30,6 +30,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/edit_back"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/left_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <View
                 android:id="@+id/view7"
                 android:layout_width="100dp"
@@ -133,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/bg_blue"
                 android:fontFamily="@font/mmedium"
                 android:text="Edit Profile"

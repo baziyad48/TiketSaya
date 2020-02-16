@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class Profile extends AppCompatActivity {
 
     Button btn_edit;
-    ImageView img_avatar;
+    ImageView img_avatar, edit_back;
     TextView name, bio;
 
     RecyclerView view;
@@ -45,6 +45,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         btn_edit = findViewById(R.id.btn_edit);
+        edit_back = findViewById(R.id.edit_back);
         img_avatar = findViewById(R.id.profile_image);
         name = findViewById(R.id.profile_name);
         bio = findViewById(R.id.profile_bio);
@@ -96,6 +97,14 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, ProfileEdit.class);
+                startActivity(intent);
+            }
+        });
+
+        edit_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, Home.class);
                 startActivity(intent);
             }
         });
