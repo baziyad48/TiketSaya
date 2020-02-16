@@ -212,15 +212,9 @@
 
             <Button
                 android:id="@+id/edit_save"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginHorizontal="24dp"
+                style="@style/btn_blue_full"
                 android:layout_marginVertical="30dp"
-                android:background="@drawable/bg_blue"
-                android:fontFamily="@font/mmedium"
                 android:text="Save"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

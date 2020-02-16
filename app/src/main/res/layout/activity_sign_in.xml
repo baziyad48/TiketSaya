@@ -74,13 +74,8 @@
 
             <Button
                 android:id="@+id/btn_signIn"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@drawable/bg_blue"
-                android:fontFamily="@font/mmedium"
+                style="@style/btn_blue_linear"
                 android:text="@string/sign_in"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
                 android:layout_marginTop="30dp"/>
 
         </LinearLayout>

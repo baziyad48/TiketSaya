@@ -53,30 +53,18 @@
 
     <Button
         android:id="@+id/btn_signIn"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginHorizontal="48dp"
+        style="@style/btn_blue"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/bg_blue"
-        android:fontFamily="@font/mmedium"
         android:text="@string/sign_in"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_getStarted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_getStarted"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="48dp"
-        android:layout_height="45dp"
+        style="@style/btn_white"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/bg_white"
-        android:fontFamily="@font/mmedium"
         android:text="New Account"
-        android:textColor="@color/textGrey"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
