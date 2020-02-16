@@ -65,30 +65,33 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/detail_tour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mregular"
-                        android:text="Pisa Tower"
+                        tools:text="Pisa Tower"
                         android:textColor="@color/textBlack"
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/detail_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
-                        android:text="Pisa City, Italy"
+                        tools:text="Pisa City, Italy"
                         android:textColor="@color/textGrey"
                         android:textSize="12sp" />
 
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/detail_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|end"
                     android:layout_weight="1"
                     android:fontFamily="@font/mlight"
-                    android:text="3 Tickets"
+                    tools:text="3 Tickets"
                     android:textAlignment="textEnd"
                     android:textColor="@color/textBlue"
                     android:textSize="12sp" />
@@ -110,12 +113,13 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/detail_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/mlight"
-                android:text="January 22, 2018"
+                tools:text="January 22, 2018"
                 android:textColor="@color/textGrey"
                 android:textSize="14sp" />
 
@@ -128,12 +132,13 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/detail_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/mlight"
-                android:text="10AM to 12PM"
+                tools:text="10AM to 12PM"
                 android:textColor="@color/textGrey"
                 android:textSize="14sp" />
 
@@ -146,12 +151,13 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/detail_policy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="26dp"
                 android:fontFamily="@font/mlight"
                 android:lineSpacingExtra="6sp"
-                android:text="Children older than 3 years must buy a\nticket to enter into the landmark"
+                tools:text="Children older than 3 years must buy a\nticket to enter into the landmark"
                 android:textColor="@color/textGrey"
                 android:textSize="14sp" />
 

@@ -1,15 +1,20 @@
 package com.example.android.tiketsaya;
 
 public class TicketItem {
-    String tour_name, location, quantity;
+    String tour_name, location, quantity, id_ticket;
 
     public TicketItem() {
     }
 
-    public TicketItem(String tour_name, String location, String quantity) {
+    public TicketItem(String id_ticket, String tour_name, String location, String quantity) {
+        this.id_ticket = id_ticket;
         this.tour_name = tour_name;
         this.location = location;
         this.quantity = quantity;
+    }
+
+    public void setId_ticket(String id_ticket) {
+        this.id_ticket = id_ticket;
     }
 
     public void setTour_name(String tour_name) {
@@ -22,6 +27,10 @@ public class TicketItem {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public String getId_ticket() {
+        return id_ticket;
     }
 
     public String getTour_name() {

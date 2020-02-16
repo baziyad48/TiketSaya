@@ -2,6 +2,7 @@ package com.example.android.tiketsaya;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketView
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Ticket.class);
-                intent.putExtra("tour_title", ticketItems.get(position).getTour_name());
+                intent.putExtra("id_ticket", ticketItems.get(position).getId_ticket());
                 context.startActivity(intent);
             }
         });

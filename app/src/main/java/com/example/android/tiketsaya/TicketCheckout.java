@@ -99,9 +99,8 @@ public class TicketCheckout extends AppCompatActivity {
                 btn_pay.setEnabled(false);
                 btn_pay.setText("Loading");
 
-                //Update balance dan ticket history
+                //Insert ticket history
                 reference = FirebaseDatabase.getInstance().getReference().child("Ticket").child(username_local).child(tour_title + "_" + System.currentTimeMillis());
-
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -109,6 +108,9 @@ public class TicketCheckout extends AppCompatActivity {
                         dataSnapshot.getRef().child("tour_name").setValue(tour_title);
                         dataSnapshot.getRef().child("quantity").setValue(String.valueOf(quantity));
                         dataSnapshot.getRef().child("location").setValue(caption_city.getText().toString());
+                        dataSnapshot.getRef().child("policy").setValue(caption_policy.getText().toString());
+                        dataSnapshot.getRef().child("tour_date").setValue("January 22, 2020");
+                        dataSnapshot.getRef().child("tour_time").setValue("10AM to 12PM");
                     }
 
                     @Override
@@ -117,6 +119,7 @@ public class TicketCheckout extends AppCompatActivity {
                     }
                 });
 
+                //Update balance
                 reference = FirebaseDatabase.getInstance().getReference().child("User").child(username_local);
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
