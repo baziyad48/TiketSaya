@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class Profile extends AppCompatActivity {
 
-    Button btn_edit;
+    Button btn_edit, btn_signout;
     ImageView img_avatar, edit_back;
     TextView name, bio;
 
@@ -45,6 +45,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         btn_edit = findViewById(R.id.btn_edit);
+        btn_signout = findViewById(R.id.btn_signout);
         edit_back = findViewById(R.id.edit_back);
         img_avatar = findViewById(R.id.profile_image);
         name = findViewById(R.id.profile_name);
@@ -106,6 +107,21 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, Home.class);
                 startActivity(intent);
+            }
+        });
+
+        btn_signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Menghapus shared preferences
+                SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(username_default, null);
+                editor.apply();
+
+                Intent intent = new Intent(Profile.this, GetStarted.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
