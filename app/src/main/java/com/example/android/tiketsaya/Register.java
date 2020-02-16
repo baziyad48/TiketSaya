@@ -51,21 +51,42 @@ public class Register extends AppCompatActivity {
                     btn_register.setEnabled(true);
                     btn_register.setText("Continue");
                 } else {
-                    //Menggunakan shared preferences
-                    SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(username_default, username.getText().toString());
-                    editor.apply();
-
-                    //Upload ke database
                     reference = FirebaseDatabase.getInstance().getReference().child("User").child(username.getText().toString());
                     reference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            dataSnapshot.getRef().child("username").setValue(username.getText().toString());
-                            dataSnapshot.getRef().child("password").setValue(password.getText().toString());
-                            dataSnapshot.getRef().child("email").setValue(email.getText().toString());
-                            dataSnapshot.getRef().child("balance").setValue(100);
+                            //Validasi apakah username sudah digunakan di Firebase
+                            if(dataSnapshot.exists()){
+                                Toast.makeText(getApplicationContext(),"Username has been taken!", Toast.LENGTH_SHORT).show();
+                                btn_register.setEnabled(true);
+                                btn_register.setText("Continue");
+                            } else {
+                                //Menggunakan shared preferences
+                                SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString(username_default, username.getText().toString());
+                                editor.apply();
+
+                                //Upload ke database
+                                reference = FirebaseDatabase.getInstance().getReference().child("User").child(username.getText().toString());
+                                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        dataSnapshot.getRef().child("username").setValue(username.getText().toString());
+                                        dataSnapshot.getRef().child("password").setValue(password.getText().toString());
+                                        dataSnapshot.getRef().child("email").setValue(email.getText().toString());
+                                        dataSnapshot.getRef().child("balance").setValue(100);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                                Intent intent = new Intent(Register.this, RegisterBio.class);
+                                startActivity(intent);
+                            }
                         }
 
                         @Override
@@ -73,9 +94,6 @@ public class Register extends AppCompatActivity {
 
                         }
                     });
-
-                    Intent intent = new Intent(Register.this, RegisterBio.class);
-                    startActivity(intent);
                 }
             }
         });
