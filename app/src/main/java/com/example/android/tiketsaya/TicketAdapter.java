@@ -41,7 +41,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketView
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Ticket.class);
-                intent.putExtra("id_ticket", ticketItems.get(position).getId_ticket());
+                intent.putExtra("tour_name", ticketItems.get(position).getTour_name());
+                intent.putExtra("quantity", ticketItems.get(position).getQuantity());
                 context.startActivity(intent);
             }
         });

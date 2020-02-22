@@ -109,8 +109,6 @@ public class TicketCheckout extends AppCompatActivity {
                         dataSnapshot.getRef().child("quantity").setValue(String.valueOf(quantity));
                         dataSnapshot.getRef().child("location").setValue(caption_city.getText().toString());
                         dataSnapshot.getRef().child("policy").setValue(caption_policy.getText().toString());
-                        dataSnapshot.getRef().child("tour_date").setValue("January 22, 2020");
-                        dataSnapshot.getRef().child("tour_time").setValue("10AM to 12PM");
                     }
 
                     @Override
