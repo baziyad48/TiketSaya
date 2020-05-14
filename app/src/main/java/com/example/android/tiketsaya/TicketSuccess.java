@@ -51,7 +51,7 @@ public class TicketSuccess extends AppCompatActivity {
         btn_ticket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TicketSuccess.this, Ticket.class);
+                Intent intent = new Intent(TicketSuccess.this, Profile.class);
                 startActivity(intent);
             }
         });
